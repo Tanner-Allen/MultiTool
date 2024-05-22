@@ -1,8 +1,12 @@
 #include <stdio.h>
 
 // Function prototypes
+void convertVolume(const char *fromUnit, const char *toUnit,
+                   double conversionFactor);
+int volumeMenu();
 
-void convertTime(const char *fromUnit, const char *toUnit, double conversionFactor);
+void convertTime(const char *fromUnit, const char *toUnit,
+                 double conversionFactor);
 int timeMenu();
 
 void convertTemp(const char *fromUnit, const char *toUnit,
@@ -22,11 +26,105 @@ void calc();
 void menu();
 
 // Function to convert time
-void convertTime(const char *fromUnit, const char *toUnit, double conversionFactor) {
+void convertVolume(const char *fromUnit, const char *toUnit,
+                   double conversionFactor) {
+  float input;
+  printf("\nEnter the volume in %s: ", fromUnit);
+  scanf("%f", &input);
+  printf("\nThe volume in %s is: %f %s\n\n", toUnit, input * conversionFactor,
+         toUnit);
+  volumeMenu();
+}
+
+int volumeMenu() {
+  printf("\n1.  Mm^3 -> Ml    2.  Ml -> Mm^3\n"
+         "3.  Sec -> Hr    4.  Hr -> Sec\n"
+         "5.  Sec -> Day   6.  Day -> Sec\n"
+         "7.  Min -> Hr    8.  Hr -> Min\n"
+         "9.  Min -> Day   10. Day -> Min\n"
+         " 3. Mm^3 -> L    4. L -> Mm^3\n"
+         " 5. Cm^3 -> Ml   6. Ml -> Cm^3\n"
+         " 7. Cm^3 -> L    8. L -> Cm^3\n"
+         " 9. Tsp -> Tbsp 10. Tbsp -> Tsp\n"
+         "11. Tsp -> Cup  12. Cup -> Tsp\n"
+         "13. Tbsp -> Cup 14. Cup -> Tbsp\n"
+         "14. Tbsp -> P   15. P -> Tbsp"
+
+         "    \nHint: Cm^3 = Ml"
+         "13. Back         14. Exit\n"
+         "Enter your choice: ");
+
+  int choice;
+  scanf("%d", &choice);
+
+  switch (choice) {
+  case 1:
+    convertTime("seconds", "minutes", 0.0167);
+    timeMenu();
+    break;
+  case 2:
+    convertTime("minutes", "seconds", 60);
+    timeMenu();
+    break;
+  case 3:
+    convertTime("seconds", "hours", 0.000277778);
+    timeMenu();
+    break;
+  case 4:
+    convertTime("hours", "seconds", 3600);
+    timeMenu();
+    break;
+  case 5:
+    convertTime("seconds", "days", 0.0000115741);
+    timeMenu();
+    break;
+  case 6:
+    convertTime("days", "seconds", 86400);
+    timeMenu();
+    break;
+  case 7:
+    convertTime("minutes", "hours", 0.0166667);
+    timeMenu();
+    break;
+  case 8:
+    convertTime("hours", "minutes", 60);
+    timeMenu();
+    break;
+  case 9:
+    convertTime("minutes", "days", 0.000694444);
+    timeMenu();
+    break;
+  case 10:
+    convertTime("days", "minutes", 1440);
+    timeMenu();
+    break;
+  case 11:
+    convertTime("hours", "days", 0.0416667);
+    timeMenu();
+    break;
+  case 12:
+    convertTime("days", "hours", 24);
+    timeMenu();
+    break;
+  case 13:
+    conversions();
+    break;
+  case 14:
+    return 1;
+  default:
+    printf("Invalid choice, please try again.\n");
+    break;
+  }
+  return 0;
+}
+
+void convertTime(const char *fromUnit, const char *toUnit,
+                 double conversionFactor) {
   float input;
   printf("\nEnter the time in %s: ", fromUnit);
   scanf("%f", &input);
-  printf("\nThe time in %s is: %f %s\n\n", toUnit, input * conversionFactor, toUnit);
+  printf("\nThe time in %s is: %f %s\n\n", toUnit, input * conversionFactor,
+         toUnit);
   timeMenu();
 }
 
@@ -44,62 +142,62 @@ int timeMenu() {
   scanf("%d", &choice);
 
   switch (choice) {
-      case 1:
-          convertTime("seconds", "minutes", 0.0167);
-          timeMenu();
-          break;
-      case 2:
-          convertTime("minutes", "seconds", 60);
-          timeMenu();
-          break;
-      case 3:
-          convertTime("seconds", "hours", 0.000277778);
-          timeMenu();
-          break;
-      case 4:
-          convertTime("hours", "seconds", 3600);
-          timeMenu();
-          break;
-      case 5:
-          convertTime("seconds", "days", 0.0000115741);
-          timeMenu();
-          break;
-      case 6:
-          convertTime("days", "seconds", 86400);
-          timeMenu();
-          break;
-      case 7:
-          convertTime("minutes", "hours", 0.0166667);
-          timeMenu();
-          break;
-      case 8:
-          convertTime("hours", "minutes", 60);
-          timeMenu();
-          break;
-      case 9:
-          convertTime("minutes", "days", 0.000694444);
-          timeMenu();
-          break;
-      case 10:
-          convertTime("days", "minutes", 1440);
-          timeMenu();
-          break;
-      case 11:
-          convertTime("hours", "days", 0.0416667);
-          timeMenu();
-          break;
-      case 12:
-          convertTime("days", "hours", 24);
-          timeMenu();
-          break;
-      case 13:
-          conversions();
-          break;
-      case 14:
-          return 1;
-      default:
-          printf("Invalid choice, please try again.\n");
-          break;
+  case 1:
+    convertTime("seconds", "minutes", 0.0167);
+    timeMenu();
+    break;
+  case 2:
+    convertTime("minutes", "seconds", 60);
+    timeMenu();
+    break;
+  case 3:
+    convertTime("seconds", "hours", 0.000277778);
+    timeMenu();
+    break;
+  case 4:
+    convertTime("hours", "seconds", 3600);
+    timeMenu();
+    break;
+  case 5:
+    convertTime("seconds", "days", 0.0000115741);
+    timeMenu();
+    break;
+  case 6:
+    convertTime("days", "seconds", 86400);
+    timeMenu();
+    break;
+  case 7:
+    convertTime("minutes", "hours", 0.0166667);
+    timeMenu();
+    break;
+  case 8:
+    convertTime("hours", "minutes", 60);
+    timeMenu();
+    break;
+  case 9:
+    convertTime("minutes", "days", 0.000694444);
+    timeMenu();
+    break;
+  case 10:
+    convertTime("days", "minutes", 1440);
+    timeMenu();
+    break;
+  case 11:
+    convertTime("hours", "days", 0.0416667);
+    timeMenu();
+    break;
+  case 12:
+    convertTime("days", "hours", 24);
+    timeMenu();
+    break;
+  case 13:
+    conversions();
+    break;
+  case 14:
+    return 1;
+  default:
+    printf("Invalid choice, please try again.\n");
+    break;
   }
   return 0;
 }
@@ -167,7 +265,8 @@ int tempMenu() {
     tempMenu();
     break;
   }
-return 0;}
+  return 0;
+}
 
 // Function to handle mass conversions
 void convertMass(const char *fromUnit, const char *toUnit,
@@ -232,7 +331,8 @@ int massMenu() {
     printf("Invalid choice, please try again.\n");
     break;
   }
-return 0;}
+  return 0;
+}
 
 // Function to handle length conversions
 void convertLength(const char *fromUnit, const char *toUnit,
@@ -354,7 +454,8 @@ int lengthMenu() {
     lengthMenu();
     break;
   }
-return 0;}
+  return 0;
+}
 
 // Conversions Menu
 void conversions(void) {
@@ -365,14 +466,14 @@ void conversions(void) {
   printf("4. Time\n");
   printf("5. Volume\n");
   printf("6. Area\n");
-  printf("7. Speed\n");
+  /*printf("7. Speed\n");
   printf("8. Pressure\n");
   printf("9. Electric Current\n");
   printf("10. Energy\n");
   printf("11. Forces\n");
   printf("12. Power\n");
   printf("13. Back\n");
-  printf("14. Exit\n");
+  printf("14. Exit\n");*/
   printf("Enter your choice: ");
   scanf("%d", &choice);
   switch (choice) {
@@ -385,7 +486,7 @@ void conversions(void) {
   case 3:
     tempMenu();
     break;
-    case 4:
+  case 4:
     timeMenu();
     break;
   case 13:
@@ -437,14 +538,13 @@ void calc() {
       result = x / y;
       printf("\n%f / %f = %f\n", x, y, result);
       menu();
-      
     }
     break;
   default:
     printf("Invalid operator\n");
     calc();
     break;
-  menu();
+    menu();
   }
 }
 
