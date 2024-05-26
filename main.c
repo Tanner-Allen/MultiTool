@@ -25,6 +25,8 @@ void conversions();
 void calc();
 void menu();
 
+//---------------------------------------------------------------------------------
+
 // Function to convert time
 void convertVolume(const char *fromUnit, const char *toUnit,
                    double conversionFactor) {
@@ -39,20 +41,21 @@ void convertVolume(const char *fromUnit, const char *toUnit,
 int volumeMenu() {
   printf("\n1.  Mm^3 -> Ml    2.  Ml -> Mm^3\n"
          " 3. Mm^3 -> L    4. L -> Mm^3\n"
-         " 5. Cm^3 -> L    6. L -> Cm^3\n"
-         " 7. Tsp -> Tbsp  8. Tbsp -> Tsp\n"
-         " 9. Tsp -> Cup  10. Cup -> Tsp\n"
-         "11. Tbsp -> Cup 12. Cup -> Tbsp\n"
-         "13. Tbsp -> Pt  14. Pt -> Tbsp\n"
-         "15. Cup -> Pt   16. Pt -> Cup\n"
-         "17. Cup -> Qt   18. Qt -> Cup\n"
-         "19. Cup -> Gal  20. Gal -> Cup\n"
-         "21. Pt -> Qt    22. Qt -> Pt\n"
-         "23. Pt -> Gal   24. Gal -> Pt\n"
-         "25. Qt -> Gal   26. Gal -> Qt\n"
+         " 5. Cm^3 -> Ml   6. Ml -> Cm^3\n"
+         " 7. Cm^3 -> L    8. L -> Cm^3\n"
+         " 9. Tsp -> Tbsp 10. Tbsp -> Tsp\n"
+         "11. Tsp -> Cup  12. Cup -> Tsp\n"
+         "13. Tbsp -> Cup 14. Cup -> Tbsp\n"
+         "14. Tbsp -> Pt   15. Pt -> Tbsp\n"
+         "16. Cup -> Pt    17. Pt -> Cup\n"
+         "18. Cup -> Qt   19. Qt -> Cup\n"
+         "20. Cup -> Gal  21. Gal -> Cup\n"
+         "22. Pt -> Qt    23. Qt -> Pt\n"
+         "24. Pt -> Gal   25. Gal -> Pt\n"
+         "26. Qt -> Gal   27. Gal -> Qt\n"
 
          "    \nHint: 1Cm^3 = 1Ml"
-         "27. Back         28. Exit\n"
+         "13. Back         14. Exit\n"
          "Enter your choice: ");
 
   int choice;
@@ -60,46 +63,57 @@ int volumeMenu() {
 
   switch (choice) {
   case 1:
-    convertVolume("Cubic ilimeters", "Millileters", 0.001);
-    VolumeMenu();
+    convertTime("cubic milimeters", "millileters", 0.001);
+    timeMenu();
     break;
   case 2:
-    convertVolume("Miliiters", "Cubic Milimeters", 1000);
-    VolumeMenu();
+    convertTime("minutes", "seconds", 60);
+    timeMenu();
     break;
   case 3:
-    convertVolume("Cubic Milimeters", "Liters", 0.000001);
-    VolumeMenu();
+    convertTime("seconds", "hours", 0.000277778);
+    timeMenu();
     break;
   case 4:
-    convertVolume("Liters", "Cubic Milimeters", 1000000);
-    VolumeMenu();
+    convertTime("hours", "seconds", 3600);
+    timeMenu();
     break;
   case 5:
-    convertVolume("Cubic Centimeters", "Liters", 0.001);
-    VolumeMenu();
+    convertTime("seconds", "days", 0.0000115741);
+    timeMenu();
     break;
   case 6:
-    convertVolume("Liters", "Cubic Centimeters", 1000);
-    volumeMenu();
+    convertTime("days", "seconds", 86400);
+    timeMenu();
     break;
-  case 7: 
-    convertVolume("Teaspoon", "Tablespoon", 0.333333);
-    volumeMenu();
+  case 7:
+    convertTime("minutes", "hours", 0.0166667);
+    timeMenu();
     break;
   case 8:
-    convertVolume("Tablespoon", "Teaspoon", 3)
-    volumeMenu();
+    convertTime("hours", "minutes", 60);
+    timeMenu();
     break;
   case 9:
-    convertVolume("Teaspoon", "Cup", 0.0208333)
-    volumeMenu();
+    convertTime("minutes", "days", 0.000694444);
+    timeMenu();
     break;
   case 10:
-  case 27:
+    convertTime("days", "minutes", 1440);
+    timeMenu();
+    break;
+  case 11:
+    convertTime("hours", "days", 0.0416667);
+    timeMenu();
+    break;
+  case 12:
+    convertTime("days", "hours", 24);
+    timeMenu();
+    break;
+  case 13:
     conversions();
     break;
-  case 28:
+  case 14:
     return 1;
   default:
     printf("Invalid choice, please try again.\n");
@@ -107,6 +121,8 @@ int volumeMenu() {
   }
   return 0;
 }
+
+//---------------------------------------------------------------------------------
 
 void convertTime(const char *fromUnit, const char *toUnit,
                  double conversionFactor) {
@@ -192,6 +208,8 @@ int timeMenu() {
   return 0;
 }
 
+//---------------------------------------------------------------------------------
+
 // Temperature conversion functions
 float fahrenheitToCelsius(float temp) { return (temp - 32) / 1.8; }
 
@@ -257,6 +275,8 @@ int tempMenu() {
   }
   return 0;
 }
+
+//---------------------------------------------------------------------------------
 
 // Function to handle mass conversions
 void convertMass(const char *fromUnit, const char *toUnit,
@@ -324,14 +344,15 @@ int massMenu() {
   return 0;
 }
 
+//---------------------------------------------------------------------------------
+
 // Function to handle length conversions
-void convertLength(const char *fromUnit, const char *toUnit,
-                   float conversionFactor) {
+void convertLength(const char *fromUnit, const char *toUnit, float conversionFactor) 
+{
   float input;
   printf("\nEnter the length in %s: ", fromUnit);
   scanf("%f", &input);
-  printf("\nThe length in %s is: %f %s\n\n", toUnit, input * conversionFactor,
-         toUnit);
+  printf("\nThe length in %s is: %f %s\n\n", toUnit, input * conversionFactor, toUnit);
   lengthMenu();
 }
 
@@ -447,6 +468,8 @@ int lengthMenu() {
   return 0;
 }
 
+//---------------------------------------------------------------------------------
+
 // Conversions Menu
 void conversions(void) {
   int choice;
@@ -491,8 +514,9 @@ void conversions(void) {
   }
 }
 
-// Calculator Function
-void calc() {
+//---------------------------------------------------------------------------------
+
+void bcalc() {
   float x = 0;
   float y = 0;
   float result;
@@ -564,13 +588,57 @@ void fib() {
   menu();
 }
 
+//This is the G.A.C a grade average calculator
+#include <stdio.h>
+
+
+void gac() 
+{
+    int hma;
+    printf("\nHow many assignments do you have: ");
+    scanf("%d", &hma);
+    grade(hma);
+}
+
+
+
+// Calculator Menu Function
+void calc(void) {
+  int choice;
+  printf("\n1. Basic Calculator\n");
+  printf("2. Grade Average Calculator\n");
+  printf("3. Fib Sequence\n");
+  printf("Enter your choice: ");
+  scanf("%d", &choice);
+  switch (choice) {
+  case 1:
+    bcalc();
+    break;
+  case 2:
+    gac();
+    break;
+  case 3:
+    fib();
+    break;
+  case 9:
+    menu();
+    break;
+  case 10:
+    return; // Exit
+  default:
+    printf("Invalid choice, please try again.\n");
+    conversions();
+    break;
+  }
+}
+//---------------------------------------------------------------------------------
+
 // Main Menu
 void menu() {
   int choice;
   printf("\n\n1. Conversions\n");
   printf("2. Calculators\n");
-  printf("3. Fibonacci\n");
-  printf("4. Exit\n");
+  printf("3. Exit\n");
   printf("Enter your choice: ");
   scanf("%d", &choice);
   switch (choice) {
@@ -582,9 +650,6 @@ void menu() {
     break;
   // Add cases for other tools as needed
   case 3:
-    fib();
-    break;
-  case 4:
     return; // Exit
   default:
     printf("Invalid choice, please try again.\n");
