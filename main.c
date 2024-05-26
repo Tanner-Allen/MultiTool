@@ -38,20 +38,21 @@ void convertVolume(const char *fromUnit, const char *toUnit,
 
 int volumeMenu() {
   printf("\n1.  Mm^3 -> Ml    2.  Ml -> Mm^3\n"
-         "3.  Sec -> Hr    4.  Hr -> Sec\n"
-         "5.  Sec -> Day   6.  Day -> Sec\n"
-         "7.  Min -> Hr    8.  Hr -> Min\n"
-         "9.  Min -> Day   10. Day -> Min\n"
          " 3. Mm^3 -> L    4. L -> Mm^3\n"
-         " 5. Cm^3 -> Ml   6. Ml -> Cm^3\n"
-         " 7. Cm^3 -> L    8. L -> Cm^3\n"
-         " 9. Tsp -> Tbsp 10. Tbsp -> Tsp\n"
-         "11. Tsp -> Cup  12. Cup -> Tsp\n"
-         "13. Tbsp -> Cup 14. Cup -> Tbsp\n"
-         "14. Tbsp -> P   15. P -> Tbsp"
+         " 5. Cm^3 -> L    6. L -> Cm^3\n"
+         " 7. Tsp -> Tbsp  8. Tbsp -> Tsp\n"
+         " 9. Tsp -> Cup  10. Cup -> Tsp\n"
+         "11. Tbsp -> Cup 12. Cup -> Tbsp\n"
+         "13. Tbsp -> Pt  14. Pt -> Tbsp\n"
+         "15. Cup -> Pt   16. Pt -> Cup\n"
+         "17. Cup -> Qt   18. Qt -> Cup\n"
+         "19. Cup -> Gal  20. Gal -> Cup\n"
+         "21. Pt -> Qt    22. Qt -> Pt\n"
+         "23. Pt -> Gal   24. Gal -> Pt\n"
+         "25. Qt -> Gal   26. Gal -> Qt\n"
 
-         "    \nHint: Cm^3 = Ml"
-         "13. Back         14. Exit\n"
+         "    \nHint: 1Cm^3 = 1Ml"
+         "27. Back         28. Exit\n"
          "Enter your choice: ");
 
   int choice;
@@ -59,57 +60,46 @@ int volumeMenu() {
 
   switch (choice) {
   case 1:
-    convertTime("seconds", "minutes", 0.0167);
-    timeMenu();
+    convertVolume("Cubic ilimeters", "Millileters", 0.001);
+    VolumeMenu();
     break;
   case 2:
-    convertTime("minutes", "seconds", 60);
-    timeMenu();
+    convertVolume("Miliiters", "Cubic Milimeters", 1000);
+    VolumeMenu();
     break;
   case 3:
-    convertTime("seconds", "hours", 0.000277778);
-    timeMenu();
+    convertVolume("Cubic Milimeters", "Liters", 0.000001);
+    VolumeMenu();
     break;
   case 4:
-    convertTime("hours", "seconds", 3600);
-    timeMenu();
+    convertVolume("Liters", "Cubic Milimeters", 1000000);
+    VolumeMenu();
     break;
   case 5:
-    convertTime("seconds", "days", 0.0000115741);
-    timeMenu();
+    convertVolume("Cubic Centimeters", "Liters", 0.001);
+    VolumeMenu();
     break;
   case 6:
-    convertTime("days", "seconds", 86400);
-    timeMenu();
+    convertVolume("Liters", "Cubic Centimeters", 1000);
+    volumeMenu();
     break;
-  case 7:
-    convertTime("minutes", "hours", 0.0166667);
-    timeMenu();
+  case 7: 
+    convertVolume("Teaspoon", "Tablespoon", 0.333333);
+    volumeMenu();
     break;
   case 8:
-    convertTime("hours", "minutes", 60);
-    timeMenu();
+    convertVolume("Tablespoon", "Teaspoon", 3)
+    volumeMenu();
     break;
   case 9:
-    convertTime("minutes", "days", 0.000694444);
-    timeMenu();
+    convertVolume("Teaspoon", "Cup", 0.0208333)
+    volumeMenu();
     break;
   case 10:
-    convertTime("days", "minutes", 1440);
-    timeMenu();
-    break;
-  case 11:
-    convertTime("hours", "days", 0.0416667);
-    timeMenu();
-    break;
-  case 12:
-    convertTime("days", "hours", 24);
-    timeMenu();
-    break;
-  case 13:
+  case 27:
     conversions();
     break;
-  case 14:
+  case 28:
     return 1;
   default:
     printf("Invalid choice, please try again.\n");
@@ -143,51 +133,51 @@ int timeMenu() {
 
   switch (choice) {
   case 1:
-    convertTime("seconds", "minutes", 0.0167);
+    convertTime("Seconds", "Minutes", 0.0167);
     timeMenu();
     break;
   case 2:
-    convertTime("minutes", "seconds", 60);
+    convertTime("Minutes", "Seconds", 60);
     timeMenu();
     break;
   case 3:
-    convertTime("seconds", "hours", 0.000277778);
+    convertTime("Seconds", "Hours", 0.000277778);
     timeMenu();
     break;
   case 4:
-    convertTime("hours", "seconds", 3600);
+    convertTime("Hours", "Seconds", 3600);
     timeMenu();
     break;
   case 5:
-    convertTime("seconds", "days", 0.0000115741);
+    convertTime("Seconds", "Days", 0.0000115741);
     timeMenu();
     break;
   case 6:
-    convertTime("days", "seconds", 86400);
+    convertTime("Days", "Seconds", 86400);
     timeMenu();
     break;
   case 7:
-    convertTime("minutes", "hours", 0.0166667);
+    convertTime("Minutes", "Hours", 0.0166667);
     timeMenu();
     break;
   case 8:
-    convertTime("hours", "minutes", 60);
+    convertTime("Hours", "Minutes", 60);
     timeMenu();
     break;
   case 9:
-    convertTime("minutes", "days", 0.000694444);
+    convertTime("Minutes", "Days", 0.000694444);
     timeMenu();
     break;
   case 10:
-    convertTime("days", "minutes", 1440);
+    convertTime("Days", "Minutes", 1440);
     timeMenu();
     break;
   case 11:
-    convertTime("hours", "days", 0.0416667);
+    convertTime("Hours", "Days", 0.0416667);
     timeMenu();
     break;
   case 12:
-    convertTime("days", "hours", 24);
+    convertTime("Days", "Hours", 24);
     timeMenu();
     break;
   case 13:
@@ -293,16 +283,16 @@ int massMenu() {
 
   switch (choice) {
   case 1:
-    convertMass("grams", "ounces", 0.035274);
+    convertMass("Grams", "Ounces", 0.035274);
     break;
   case 2:
-    convertMass("ounces", "grams", 28.3495);
+    convertMass("Ounces", "Grams", 28.3495);
     break;
   case 3:
-    convertMass("grams", "pounds", 0.00220462);
+    convertMass("Grams", "Pounds", 0.00220462);
     break;
   case 4:
-    convertMass("pounds", "grams", 453.592);
+    convertMass("Pounds", "Grams", 453.592);
     break;
   case 5:
     convertMass("ounces", "pounds", 0.0625);
