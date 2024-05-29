@@ -41,21 +41,20 @@ void convertVolume(const char *fromUnit, const char *toUnit,
 int volumeMenu() {
   printf("\n1.  Mm^3 -> Ml    2.  Ml -> Mm^3\n"
          " 3. Mm^3 -> L    4. L -> Mm^3\n"
-         " 5. Cm^3 -> Ml   6. Ml -> Cm^3\n"
-         " 7. Cm^3 -> L    8. L -> Cm^3\n"
-         " 9. Tsp -> Tbsp 10. Tbsp -> Tsp\n"
-         "11. Tsp -> Cup  12. Cup -> Tsp\n"
-         "13. Tbsp -> Cup 14. Cup -> Tbsp\n"
-         "14. Tbsp -> Pt   15. Pt -> Tbsp\n"
-         "16. Cup -> Pt    17. Pt -> Cup\n"
-         "18. Cup -> Qt   19. Qt -> Cup\n"
-         "20. Cup -> Gal  21. Gal -> Cup\n"
-         "22. Pt -> Qt    23. Qt -> Pt\n"
-         "24. Pt -> Gal   25. Gal -> Pt\n"
-         "26. Qt -> Gal   27. Gal -> Qt\n"
+         " 5. Cm^3 -> L    6. L -> Cm^3\n"
+         " 7. Tsp -> Tbsp  8. Tbsp -> Tsp\n"
+         " 9. Tsp -> Cup  10. Cup -> Tsp\n"
+         "11. Tbsp -> Cup 12. Cup -> Tbsp\n"
+         "13. Tbsp -> Pt  14. Pt -> Tbsp\n"
+         "15. Cup -> Pt   16. Pt -> Cup\n"
+         "17. Cup -> Qt   18. Qt -> Cup\n"
+         "19. Cup -> Gal  20. Gal -> Cup\n"
+         "21. Pt -> Qt    22. Qt -> Pt\n"
+         "23. Pt -> Gal   24. Gal -> Pt\n"
+         "25. Qt -> Gal   26. Gal -> Qt\n"
 
-         "    \nHint: 1Cm^3 = 1Ml"
-         "13. Back         14. Exit\n"
+         "\n    Hint: 1Cm^3 = 1Ml\n"
+         "27. Back         28. Exit\n"
          "Enter your choice: ");
 
   int choice;
@@ -63,57 +62,139 @@ int volumeMenu() {
 
   switch (choice) {
   case 1:
-    convertTime("cubic milimeters", "millileters", 0.001);
-    timeMenu();
+    convertVolume("Cubic ilimeters", "Millileters", 0.001);
+    volumeMenu();
     break;
+
   case 2:
-    convertTime("minutes", "seconds", 60);
-    timeMenu();
+    convertVolume("Miliiters", "Cubic Milimeters", 1000);
+    volumeMenu();
     break;
+
   case 3:
-    convertTime("seconds", "hours", 0.000277778);
-    timeMenu();
+    convertVolume("Cubic Milimeters", "Liters", 0.000001);
+    volumeMenu();
     break;
+
   case 4:
-    convertTime("hours", "seconds", 3600);
-    timeMenu();
+    convertVolume("Liters", "Cubic Milimeters", 1000000);
+    volumeMenu();
     break;
+
   case 5:
-    convertTime("seconds", "days", 0.0000115741);
-    timeMenu();
+    convertVolume("Cubic Centimeters", "Liters", 0.001);
+    volumeMenu();
     break;
+
   case 6:
-    convertTime("days", "seconds", 86400);
-    timeMenu();
+    convertVolume("Liters", "Cubic Centimeters", 1000);
+    volumeMenu();
     break;
-  case 7:
-    convertTime("minutes", "hours", 0.0166667);
-    timeMenu();
+
+  case 7: 
+    convertVolume("Teaspoons", "Tablespoons", 0.333333);
+    volumeMenu();
     break;
+
   case 8:
-    convertTime("hours", "minutes", 60);
-    timeMenu();
+    convertVolume("Tablespoons", "Teaspoons", 3);
+    volumeMenu();
     break;
+
   case 9:
-    convertTime("minutes", "days", 0.000694444);
-    timeMenu();
+    convertVolume("Teaspoons", "Cups", 0.0208333);
+    volumeMenu();
     break;
+
   case 10:
-    convertTime("days", "minutes", 1440);
-    timeMenu();
+    convertVolume("Cups", "Teaspoons", 48);
+    volumeMenu();
     break;
+
   case 11:
-    convertTime("hours", "days", 0.0416667);
-    timeMenu();
+    convertVolume("Tablespoons", "Cups", 0.0625);
+    volumeMenu(); 
     break;
+
   case 12:
-    convertTime("days", "hours", 24);
-    timeMenu();
+    convertVolume("Cups", "Tablespoons", 16);
+    volumeMenu();
     break;
+
   case 13:
+    convertVolume("Tablespoons", "Pints", 0.03125);
+    volumeMenu();
+    break;
+
+  case 14:
+    convertVolume("Pints", "Tablespoons", 32);
+    volumeMenu();
+    break;
+
+  case 15:
+    convertVolume("Cups", "Pints", 0.5);
+    volumeMenu();
+    break;
+
+  case 16:
+    convertVolume("Pints", "Cups", 2);
+    volumeMenu();
+    break;
+
+  case 17:
+    convertVolume("Cups", "Quarts", 0.25);
+    volumeMenu();
+    break;
+
+  case 18:
+    convertVolume("Quarts", "Cups", 4);
+    volumeMenu();
+    break;
+
+  case 19:
+    convertVolume("Cups", "Gallons", 0.0625);
+    volumeMenu();
+    break;
+
+  case 20:
+    convertVolume("Gallons", "Cups", 16);
+    volumeMenu();
+    break;
+  
+  case 21:
+    convertVolume("Pints", "Quarts", 0.5);
+    volumeMenu();
+    break;
+
+  case 22:
+    convertVolume("Quarts", "Pints", 2);
+    volumeMenu();
+    break;
+
+  case 23:
+    convertVolume("Pints", "Gallons", 0.125);
+    volumeMenu();
+    break;
+
+  case 24:
+    convertVolume("Gallons", "Pints",   8);
+    volumeMenu();
+    break;
+
+  case 25:
+    convertVolume("Quarts", "Gallons", 0.25);
+    volumeMenu();
+    break;
+
+  case 26:
+    convertVolume("Gallons", "Quarts", 4);
+    volumeMenu();
+    break;
+
+  case 27:
     conversions();
     break;
-  case 14:
+  case 28:
     return 1;
   default:
     printf("Invalid choice, please try again.\n");
@@ -478,8 +559,8 @@ void conversions(void) {
   printf("3. Temperature\n");
   printf("4. Time\n");
   printf("5. Volume\n");
-  printf("6. Area\n");
-  /*printf("7. Speed\n");
+  /*printf("6. Area\n");
+  printf("7. Speed\n");
   printf("8. Pressure\n");
   printf("9. Electric Current\n");
   printf("10. Energy\n");
@@ -501,6 +582,9 @@ void conversions(void) {
     break;
   case 4:
     timeMenu();
+    break;
+  case 5:
+    volumeMenu();
     break;
   case 13:
     menu();
@@ -589,8 +673,22 @@ void fib() {
 }
 
 //This is the G.A.C a grade average calculator
-#include <stdio.h>
+void grade(int assignments) 
+{   
+  int grades[assignments];
+  int sum = 0;
 
+  for(int i = 0; i < assignments; i++)    
+    {
+      printf("\nEnter your grade for assignment #%d: ", i + 1);
+      scanf("%d", &grades[i]);
+      sum += grades[i];   
+    }  
+  float average = (float)sum / assignments;
+  printf("\nAverage grade = %d / %d \n", sum, assignments);
+  printf("Average grade: %.2f\n", average);
+
+}
 
 void gac() 
 {
@@ -645,12 +743,14 @@ void menu() {
   case 1:
     conversions();
     break;
+
   case 2:
     calc();
     break;
-  // Add cases for other tools as needed
+
   case 3:
     return; // Exit
+
   default:
     printf("Invalid choice, please try again.\n");
     menu();
